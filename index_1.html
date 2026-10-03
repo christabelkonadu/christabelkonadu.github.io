@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Christabel Konadu, statistics graduate student at Western Michigan University.">
+<title>Christabel Konadu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: academic homepage — profile card (left) + biography (right) on a tinted band, then project cards, teaching, contact */
+:root{
+  --bg:#f7f9fa; --band:#eaf3f1; --surface:#ffffff; --ink:#14222b; --muted:#56656f; --line:#d9e1e5;
+  --accent:#0f6e6a; --accent-soft:#dcefec; --mark:#c98a12; --placeholder:#a0682a;
+  --display:"Spectral",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1719; --band:#132225; --surface:#162124; --ink:#e4ecee; --muted:#9aabb1; --line:#2a383c;
+  --accent:#5cc2b9; --accent-soft:#1a3532; --mark:#e3b14f; --placeholder:#e0a868; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1719; --band:#132225; --surface:#162124; --ink:#e4ecee; --muted:#9aabb1; --line:#2a383c;
+  --accent:#5cc2b9; --accent-soft:#1a3532; --mark:#e3b14f; --placeholder:#e0a868; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.65;padding-inline:20px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1000px;margin-inline:auto}
+
+/* nav */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-inline:-20px;padding-inline:20px}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-block:14px}
+.brand{font-family:var(--display);font-weight:600;font-size:1.2rem;color:var(--ink)}
+.brand:hover{text-decoration:none}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{color:var(--muted);font-size:.93rem}
+nav a:hover{color:var(--accent);text-decoration:none}
+
+/* home band */
+.band{background:var(--band);margin-inline:-20px;padding-inline:20px;border-bottom:1px solid var(--line)}
+.home{display:grid;grid-template-columns:280px 1fr;gap:52px;padding-block:60px;align-items:start}
+.home > *{min-width:0}
+.profile{text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:30px 22px 24px;box-shadow:0 10px 30px -18px rgba(15,60,58,.35)}
+.avatar{width:168px;height:168px;margin:0 auto 18px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--display);font-size:3.2rem;font-weight:600;object-fit:cover;box-shadow:0 0 0 5px var(--surface),0 0 0 7px var(--accent)}
+.profile h1{font-family:var(--display);font-weight:600;font-size:1.65rem;line-height:1.2;margin:0 0 6px}
+.role{margin:0;font-weight:500}
+.aff{margin:2px 0 0;color:var(--muted);font-size:.93rem;line-height:1.45}
+.icons{display:flex;justify-content:center;gap:10px;list-style:none;padding:0;margin:18px 0 0}
+.icons a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;color:var(--accent);background:var(--accent-soft);transition:transform .15s,background .15s,color .15s}
+.icons a:hover{background:var(--accent);color:var(--surface);transform:translateY(-2px);text-decoration:none}
+.icons svg{width:18px;height:18px}
+
+.eyebrow{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h2{font-family:var(--display);font-weight:400;font-size:2rem;line-height:1.2;margin:0 0 18px;text-wrap:balance}
+.bio p{margin:0 0 14px;max-width:68ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 40px;margin-top:26px}
+.facts > div{min-width:0}
+h3.small{font-family:var(--mono);font-weight:500;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.plain{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{font-size:.88rem;padding:4px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.edu li{display:grid;grid-template-columns:20px 1fr;gap:10px}
+.edu svg{width:20px;height:20px;margin-top:2px;color:var(--accent)}
+.edu strong{font-weight:600;display:block;line-height:1.4}
+.edu span{color:var(--muted);font-size:.92rem;line-height:1.4;display:block}
+
+/* sections */
+section.block{padding-block:56px;border-top:1px solid var(--line)}
+section.block:first-of-type{border-top:0}
+.group{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:34px 0 14px;display:flex;align-items:center;gap:12px}
+.group::after{content:"";flex:1;height:1px;background:var(--line)}
+.pubs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.pubs li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s,border-color .15s}
+.pubs li:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 12px 28px -18px rgba(15,60,58,.45)}
+.venue{order:-1;margin:0 0 8px;font-family:var(--mono);font-size:.74rem;color:var(--accent)}
+.pubs h3{font-family:var(--display);font-weight:600;font-size:1.1rem;line-height:1.35;margin:0 0 8px;text-wrap:balance}
+.pubs p.sum{margin:0;color:var(--muted);font-size:.95rem}
+.pubs.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:680px){.pubs.two{grid-template-columns:1fr}}
+.res{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:14px}
+.res .todo{font-size:.8rem;font-weight:500;padding:3px 10px;border:1px dashed var(--placeholder);border-radius:6px;color:var(--placeholder)}
+
+.teach{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.teach li{border-left:3px solid var(--mark);padding:4px 0 4px 18px}
+.teach h3{font-family:var(--display);font-weight:600;font-size:1.12rem;margin:0}
+.teach .where{margin:0 0 6px;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.teach p{margin:0;max-width:70ch}
+
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 40px;background:var(--band);border-radius:14px;padding:28px}
+.contact > *{min-width:0}
+.contact dt{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.contact dd{margin:0 0 10px;overflow-wrap:anywhere}
+.copyline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+button.copy{font:inherit;font-size:.8rem;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:6px;padding:1px 9px;cursor:pointer}
+button.copy:hover{background:var(--accent-soft)}
+.todo{color:var(--placeholder)}
+
+footer{border-top:1px solid var(--line);padding-block:26px 40px;color:var(--muted);font-size:.86rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:760px){
+  .home{grid-template-columns:1fr;gap:32px;padding-block:36px}
+  .avatar{width:136px;height:136px;font-size:2.5rem}
+  h2{font-size:1.7rem}
+  section.block{padding-block:42px}
+  .contact{padding:22px}
+  nav ul{gap:16px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Christabel Konadu</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#top">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+ <div class="band"><div class="wrap home">
+    <aside class="profile">
+      <img class="avatar" src="photo.jpg" alt="Christabel Konadu">
+      <h1>Christabel Konadu</h1>
+      <p class="role">M.Sc. Student in Statistics</p>
+      <p class="aff">Department of Statistics<br>Western Michigan University</p>
+      <ul class="icons">
+        <li><a href="#contact" aria-label="Email" title="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/in/christabel-konadu" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></a></li>
+        <li><a href="#contact" aria-label="CV" title="CV">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></a></li>
+      </ul>
+    </aside>
+
+    <div>
+      <p class="eyebrow">About</p>
+      <h2>Biography</h2>
+      <div class="bio">
+        <p>Christabel Konadu is a graduate student in Statistics at Western Michigan University, where she is a Graduate Assistant in the Department of Statistics. Her research focuses on statistical methods for clinical and public health data, with interests in survival and longitudinal data analysis, mixed-effects modeling, and machine learning for disease detection and prediction. She is particularly interested in the socioeconomic and public health determinants of chronic disease.</p>
+        <p>Christabel's training began in actuarial science at Kwame Nkrumah University of Science and Technology (KNUST) in Ghana, where she built a foundation in risk, time series, and econometric modeling and gained industry experience in banking, insurance, and financial services. She has taught and mentored students in probability, statistical inference, and regression at KNUST and WMU.</p>
+      </div>
+      <div class="facts">
+        <div>
+          <h3 class="small">Interests</h3>
+          <ul class="chips">
+            <li>Biostatistics</li>
+            <li>Survival and longitudinal data analysis</li>
+            <li>Mixed-effects models</li>
+            <li>Machine learning for disease detection</li>
+            <li>Public health determinants of chronic disease</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="small">Education</h3>
+          <ul class="plain edu">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>
+              <div><strong>M.Sc. in Statistics, in progress</strong><span>Western Michigan University</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>
+              <div><strong>B.Sc. in Actuarial Science, 2024</strong><span>Kwame Nkrumah University of Science and Technology</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div></div>
+
+ <div class="wrap">
+  <section class="block" id="research">
+    <p class="eyebrow">Research</p>
+    <h2>Projects</h2>
+
+    <p class="group">Biostatistics &amp; Public Health</p>
+    <ul class="pubs two">
+      <li>
+        <h3>Sleep Duration and Obesity Among U.S. Adults</h3>
+        <p class="venue">Western Michigan University · 2026</p>
+        <p class="sum">Logistic regression on NHANES survey data examining whether short sleep is associated with obesity independent of employment status and other confounders.</p>
+        <div class="res"><span class="todo">+ Add report / slides</span></div>
+      </li>
+      <li>
+        <h3>Long-Term Effects of Surgical and Nonsurgical Therapies in Periodontal Disease</h3>
+        <p class="venue">Western Michigan University · 2026</p>
+        <p class="sum">Mixed-effects models for longitudinal, repeated-measures clinical trial data comparing periodontal therapies over time.</p>
+        <div class="res"><span class="todo">+ Add report / slides</span></div>
+      </li>
+      <li>
+        <h3>Socioeconomic Determinants of Cardiometabolic Health: Effects of Education and Poverty on Blood Pressure, Cholesterol, and Glucose</h3>
+        <p class="venue">Western Michigan University · 2025</p>
+        <p class="sum">Regression and ANOVA-based methods relating education and poverty to cardiometabolic markers in population health survey data.</p>
+        <div class="res"><span class="todo">+ Add report / slides</span></div>
+      </li>
+      <li>
+        <h3>Examining, Detecting, and Predicting Breast Cancer Using an Innovative Machine Learning Algorithm-Based Approach</h3>
+        <p class="venue">KNUST · 2025</p>
+        <p class="sum">Comparison of logistic regression, random forest, and support vector machines for distinguishing malignant from benign cases, with feature selection and cross-validation.</p>
+        <div class="res"><span class="todo">+ Add report / slides</span></div>
+      </li>
+    </ul>
+
+    <p class="group">Quantitative &amp; Econometric Research</p>
+    <ul class="pubs">
+      <li>
+        <h3>Impact of Fuel Price Fluctuations on Exchange Rate Volatility in Ghana</h3>
+        <p class="venue">KNUST · 2025</p>
+        <p class="sum">GARCH-family models of how fuel price changes contribute to volatility in Ghana's foreign exchange market.</p>
+        <div class="res"><span class="todo">+ Add report / slides</span></div>
+      </li>
+      <li>
+        <h3>Forecasting Time Series Using Machine Learning Methods</h3>
+        <p class="venue">KNUST · 2024–2025</p>
+        <p class="sum">LSTM, random forest, and ARIMA models for nonlinear financial and macroeconomic series, with a Power BI dashboard tracking model performance.</p>
+        <div class="res"><span class="todo">+ Add report / slides</span></div>
+      </li>
+      <li>
+        <h3>Inflation's Impact on Economic Growth in Ghana: An ARDL Approach</h3>
+        <p class="venue">KNUST · 2024</p>
+        <p class="sum">ARDL bounds testing of the short- and long-run dynamics between inflation and GDP growth.</p>
+        <div class="res"><span class="todo">+ Add report / slides</span></div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="block" id="teaching">
+    <p class="eyebrow">Teaching</p>
+    <h2>Teaching experience</h2>
+    <ul class="teach">
+      <li>
+        <h3>Graduate Assistant</h3>
+        <p class="where">Department of Statistics, Western Michigan University · 2025–present</p>
+        <p>Supports applied statistics courses and develops instructional materials and data visualizations in Excel, R, and Power BI.</p>
+      </li>
+      <li>
+        <h3>Teaching &amp; Research Assistant</h3>
+        <p class="where">Department of Statistics &amp; Actuarial Science, KNUST · 2024–2025</p>
+        <p>Led undergraduate tutorials in Probability and Statistics, Statistical Inference, and Regression Analysis.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="block" id="contact">
+    <p class="eyebrow">Contact</p>
+    <h2>Get in touch</h2>
+    <div class="contact">
+      <dl style="margin:0">
+        <dt>Email</dt>
+        <dd><div class="copyline"><span class="em">christabel.konadu@wmich.edu</span><button class="copy" type="button">Copy</button></div></dd>
+        <dd><div class="copyline"><span class="em">cabenakonadu@gmail.com</span><button class="copy" type="button">Copy</button></div></dd>
+      </dl>
+      <dl style="margin:0">
+        <dt>Address</dt>
+        <dd>Department of Statistics<br>Western Michigan University<br>Kalamazoo, MI</dd>
+      </dl>
+      <dl style="margin:0">
+        <dt>Elsewhere</dt>
+        <dd><a href="https://www.linkedin.com/in/christabel-konadu" target="_blank" rel="noopener">LinkedIn</a></dd>
+        <dd><span class="todo">CV (PDF): add link</span></dd>
+      </dl>
+    </div>
+  </section>
+ </div>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Christabel Konadu</span><span>Last updated October 2026</span></div>
+</footer>
+
+<script>
+(function(){
+  const img=document.querySelector('img.avatar'); if(!img) return;
+  const swap=()=>{const d=document.createElement('div');d.className='avatar';d.setAttribute('aria-hidden','true');d.textContent='CK';img.replaceWith(d);};
+  if(img.complete && img.naturalWidth===0) swap(); else img.addEventListener('error',swap);
+})();
+document.querySelectorAll('button.copy').forEach(btn=>{
+  const em=btn.previousElementSibling;
+  btn.addEventListener('click',()=>{
+    const reset=()=>setTimeout(()=>btn.textContent='Copy',1800);
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(em);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected';reset();};
+    try{navigator.clipboard.writeText(em.textContent).then(()=>{btn.textContent='Copied';reset();},fallback);}catch(e){fallback();}
+  });
+});
+</script>
+</body>
+</html>
